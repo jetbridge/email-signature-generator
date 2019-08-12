@@ -1,0 +1,77 @@
+{
+  "name": "signature",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "24.0.17",
+    "@types/node": "12.7.1",
+    "@types/react": "16.9.1",
+    "@types/react-dom": "16.8.5",
+    "jetbridge-react-scripts": "1.0.19",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "typescript": "3.5.3",
+    "axios": "latest",
+    "classnames": "latest",
+    "react-router-dom": "latest",
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
+    "@jetbridge/frontend-core": "git+ssh://git@github.com:jetbridge/frontend-core.git"
+  },
+  "devDependencies": {
+    "babel-loader": "8.0.5",
+    "awesome-typescript-loader": "latest",
+    "@storybook/addon-actions": "latest",
+    "@storybook/addon-centered": "latest",
+    "@storybook/addon-info": "latest",
+    "@storybook/addon-links": "latest",
+    "@storybook/addons": "latest",
+    "@storybook/react": "latest",
+    "@storybook/cli": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/storybook__react": "latest",
+    "@types/react-router-dom": "latest",
+    "@types/react-router": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "eslint": "^6.1.0",
+    "husky": "latest"
+  },
+  "types": "index.d.ts",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "fix": "prettier --write src/**/*.ts src/**/*.tsx && eslint --fix src/**/*.ts src/**/*.tsx"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
