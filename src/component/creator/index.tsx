@@ -68,6 +68,8 @@ const SignatureCreator = ({ imageFile, ...sig }: ISignatureCreatorProps) => {
           {showHTML ? 'Hide' : 'Show'} HTML
         </Button>
 
+        <p>Size: {html.length} bytes</p>
+
         {showHTML && (
           <React.Fragment>
             <br />

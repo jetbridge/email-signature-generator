@@ -5,4 +5,4 @@ export default `<svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" v
             <tspan x="7" y="11">My Blog</tspan>
         </text>
     </g>
-</svg>`.trimAll()
+</svg>`

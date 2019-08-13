@@ -36,6 +36,7 @@ const compressionOpts = {
   quality: 0.8,
   maxWidth: 84,
   maxHeight: 84,
+  convertSize: 4000, // png over 4k -> jpeg
 }
 
 const SignatureCreatorForm = ({

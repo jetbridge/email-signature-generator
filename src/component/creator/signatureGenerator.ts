@@ -29,21 +29,17 @@ export const generateSignatureHTML = ({
   githubUsername,
 }: IGenHTML): string => {
   const avatarCSS = `
-  x-border-radius: 100%;
-  x-border: 2px #33a solid;
   height: ${avatarSize}px;
   width: ${avatarSize}px;
   margin: 2px 8px 0 2px;
   object-fit: cover;
-  `.trimAll()
+  `.replace(/(\s+)/g, ' ')
 
   const textCSS = `
   line-height: 21px;
   font-size: 17px;
   font-family: Trebuchet MS, Tahoma, Verdana, sans-serif;
-  `.trimAll()
-
-  // const liDataUrl = await getDataUrl(LinkedInIcon)
+  `.replace(/(\s+)/g, ' ')
 
   const linkedIn = linkedinUrl ? `<a href="${linkedinUrl}">${LinkedInIcon}</a>` : ''
   const blog = blogUrl ? `<a href="${blogUrl}">${BlogIcon}</a>` : ''
@@ -69,8 +65,6 @@ export const generateSignatureHTML = ({
   `,
     { removeAttributeQuotes: true }
   )
-
-  console.log('size', html.length)
 
   return html
 }
