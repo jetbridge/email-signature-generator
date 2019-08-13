@@ -1,5 +1,5 @@
-String.prototype.trimNewlines = function() {
-  return this.replace(/(\n)/g, ' ')
+String.prototype.trimAll = function() {
+  return this.replace(/(\s+)/g, ' ')
 }
 
 export const _ = ''

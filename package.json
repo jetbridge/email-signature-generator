@@ -13,6 +13,7 @@
     "@types/react-dom": "16.8.5",
     "axios": "latest",
     "classnames": "latest",
+    "htmlclean": "^3.0.8",
     "jetbridge-react-scripts": "1.0.19",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

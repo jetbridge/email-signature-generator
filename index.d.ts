@@ -1,3 +1,5 @@
 interface String {
-  trimNewlines(): string
+  trimAll(): string
 }
+
+declare module 'htmlclean'

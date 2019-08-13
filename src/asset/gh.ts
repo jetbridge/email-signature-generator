@@ -1,7 +1,4 @@
 export default `<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    <title>Path</title>
-    <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="LetterSignature" transform="translate(-128.000000, -84.000000)" fill="#2D3137" fill-rule="nonzero">
             <g id="github-logo" transform="translate(128.000000, 84.000000)">
@@ -9,4 +6,4 @@ export default `<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1
             </g>
         </g>
     </g>
-</svg>`.replace(/(\n)/g, ' ')
+</svg>`.trimAll()

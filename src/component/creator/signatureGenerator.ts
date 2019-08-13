@@ -1,6 +1,7 @@
 import LinkedInIcon from '../../asset/linkedIn'
 import BlogIcon from '../../asset/blog'
 import GitHubIcon from '../../asset/gh'
+import htmlclean from 'htmlclean'
 // import JBOverlay from '../../asset/jb'
 // import avatarBg from '../../asset/avatarBorder'
 
@@ -34,13 +35,13 @@ export const generateSignatureHTML = ({
   width: ${avatarSize}px;
   margin: 2px 8px 0 2px;
   object-fit: cover;
-  `.trimNewlines()
+  `.trimAll()
 
   const textCSS = `
   line-height: 21px;
   font-size: 17px;
   font-family: Trebuchet MS, Tahoma, Verdana, sans-serif;
-  `.trimNewlines()
+  `.trimAll()
 
   // const liDataUrl = await getDataUrl(LinkedInIcon)
 
@@ -50,41 +51,28 @@ export const generateSignatureHTML = ({
 
   const image = `<img src="${imageUrl}" style="${avatarCSS}" />`
 
-  // const image = imageUrl
-  //   ? `
-  // <div style="position: relative;">
-  //   <img src="${imageUrl}" style="${avatarCSS}" />
-  //   <!--img src="${JBOverlay}" style="position: absolute; bottom: 5px; right: 5px;" /-->
-  // </div>
-  // `.replace(/(\n)/g, ' ')
-  //   : ''
-
-  return `
+  const html = htmlclean(
+    `
     <table border="0" cellspacing="0" cellpadding="0" style="float:left;">
       <tr>
         <td width="${avatarSize}" rowspan="2">
           ${image}
         </td>
-        <td>
-          <div style="${textCSS}">Best Regards</div>
-          <div style="${textCSS} font-weight: 600;">${name}</div>
-          <div style="${textCSS}">${position} at <a style="color: #16181c;">JetBridge</a></div>
+        <td style="${textCSS}">
+          <div>Best Regards</div>
+          <div style="font-weight: 600;">${name}</div>
+          <div>${position} at <a href="https://jetbridge.com" style="color: #4378cb; text-decoration: underline;">JetBridge</a></div>
           <div style="margin-top: 5px">${linkedIn} ${blog} ${github}</div>
         </td>
       </tr>
     </table>
-  `.trimNewlines()
+  `,
+    { removeAttributeQuotes: true }
+  )
 
-  return `<div style="display: flex; width: 500px; min-height: 91px; padding: 5px;">
-    ${image}
-    <div style="margin: 2px 0px 0px 10px;">
-      <div style="${textCSS}">Best Regards</div>
-      <div style="${textCSS} font-weight: 600;">${name}</div>
-      <div style="${textCSS}">${position} at <a style="color: #16181c;">JetBridge</a></div>
-      <div style="margin-top: 5px">${linkedIn} ${blog} ${github}</div>
-    </div>
-  </div>
-  `
+  console.log('size', html.length)
+
+  return html
 }
 
 async function getDataUrl(file: File): Promise<string> {

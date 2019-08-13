@@ -34,7 +34,6 @@ const SignatureCreator = ({ imageFile, ...sig }: ISignatureCreatorProps) => {
     reader.addEventListener(
       'load',
       () => {
-        console.log(reader.result)
         setImageUrl(String(reader.result))
       },
       false
