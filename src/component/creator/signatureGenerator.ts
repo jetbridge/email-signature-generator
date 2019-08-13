@@ -61,7 +61,7 @@ export const generateSignatureHTML = ({
         <td style="${textCSS}">
           <div>Best Regards</div>
           <div style="font-weight: 600;">${name}</div>
-          <div>${position} at <a href="https://jetbridge.com" style="color: #4378cb; text-decoration: underline;">JetBridge</a></div>
+          <div>${position} at <a href="https://jetbridge.com" style="color: #4378cb; text-decoration: none;">JetBridge</a></div>
           <div style="margin-top: 5px">${linkedIn} ${blog} ${github}</div>
         </td>
       </tr>

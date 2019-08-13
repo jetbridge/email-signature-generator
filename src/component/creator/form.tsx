@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, TextField, Typography, FormControlLabel } from '@material-ui/core'
+import { Paper, TextField } from '@material-ui/core'
 import { useDropzone } from 'react-dropzone'
 import SignatureCreator from '.'
+import Compressor from 'compressorjs'
 
 const useStyles = makeStyles({
   avatarDrop: {
@@ -31,6 +32,12 @@ interface ISignatureCreatorFormProps {
   defaultGhUsername?: string
 }
 
+const compressionOpts = {
+  quality: 0.8,
+  maxWidth: 84,
+  maxHeight: 84,
+}
+
 const SignatureCreatorForm = ({
   defaultName,
   defaultPosition,
@@ -48,7 +55,12 @@ const SignatureCreatorForm = ({
 
   const onDrop = React.useCallback(
     acceptedFiles => {
-      setAvatarFile(acceptedFiles[0])
+      if (!acceptedFiles.length || !acceptedFiles[0]) return
+
+      new Compressor(acceptedFiles[0], {
+        ...compressionOpts,
+        success: result => setAvatarFile(result as File),
+      })
     },
     [setAvatarFile]
   )
