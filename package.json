@@ -3,41 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@jetbridge/frontend-core": "git+ssh://git@github.com:jetbridge/frontend-core.git",
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
     "@types/jest": "24.0.17",
     "@types/node": "12.7.1",
     "@types/react": "16.9.1",
     "@types/react-dom": "16.8.5",
+    "axios": "latest",
+    "classnames": "latest",
     "jetbridge-react-scripts": "1.0.19",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "typescript": "3.5.3",
-    "axios": "latest",
-    "classnames": "latest",
+    "react-dropzone": "^10.1.7",
     "react-router-dom": "latest",
-    "@material-ui/core": "^4.3.0",
-    "@material-ui/icons": "^4.2.1",
-    "@material-ui/styles": "^4.3.0",
-    "@jetbridge/frontend-core": "git+ssh://git@github.com:jetbridge/frontend-core.git"
+    "typescript": "3.5.3"
   },
   "devDependencies": {
-    "babel-loader": "8.0.5",
-    "awesome-typescript-loader": "latest",
     "@storybook/addon-actions": "latest",
     "@storybook/addon-centered": "latest",
     "@storybook/addon-info": "latest",
     "@storybook/addon-links": "latest",
     "@storybook/addons": "latest",
-    "@storybook/react": "latest",
     "@storybook/cli": "latest",
+    "@storybook/react": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
-    "@types/storybook__react": "latest",
-    "@types/react-router-dom": "latest",
+    "@types/react-dropzone": "^5.1.0",
     "@types/react-router": "latest",
-    "lint-staged": "latest",
-    "prettier": "latest",
+    "@types/react-router-dom": "latest",
+    "@types/storybook__react": "latest",
+    "awesome-typescript-loader": "latest",
+    "babel-loader": "8.0.5",
     "eslint": "^6.1.0",
-    "husky": "latest"
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest"
   },
   "types": "index.d.ts",
   "husky": {
@@ -60,7 +62,8 @@
     "lint": "eslint src/**/*.ts src/**/*.tsx",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "fix": "prettier --write src/**/*.ts src/**/*.tsx && eslint --fix src/**/*.ts src/**/*.tsx"
+    "fix": "prettier --write src/**/*.ts src/**/*.tsx && eslint --fix src/**/*.ts src/**/*.tsx",
+    "deploy": "yarn build && AWS_PROFILE=jb aws s3 sync build/ s3://signature-generator.jetbridge.app/"
   },
   "browserslist": {
     "production": [

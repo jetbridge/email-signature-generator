@@ -1,20 +1,16 @@
 import * as React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import SignatureCreatorForm from '../creator/form'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  hero: {
-    fontSize: '2.0rem',
-    color: theme.palette.primary.main,
-  },
-}))
+const useStyles = makeStyles((theme: Theme) => ({}))
 
 interface IHomeProps {}
 
 const Home = (props: IHomeProps) => {
   const classes = useStyles()
 
-  return <div className={classes.hero}>Welcome to your sweet new project.</div>
+  return <SignatureCreatorForm />
 }
 
 export default Home

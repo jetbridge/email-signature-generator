@@ -1,4 +1,5 @@
 import { configure } from '@storybook/react'
+import '../src/string.extensions'
 
 const req = require.context('../src', true, /.stories.tsx$/)
 function loadStories() {
