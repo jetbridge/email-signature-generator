@@ -42,14 +42,14 @@ export const generateSignatureHTML = ({
   `.replace(/(\s+)/g, ' ')
 
   const linkedIn = linkedinUrl ? `<a href="${linkedinUrl}">${LinkedInIcon}</a>` : ''
-  const blog = blogUrl ? `<a href="${blogUrl}">${BlogIcon}</a>` : ''
+  const blog = blogUrl ? `<a href="${blogUrl}" style="text-decoration: none;">${BlogIcon}</a>` : ''
   const github = githubUsername ? `<a href="https://github.com/${githubUsername}">${GitHubIcon}</a>` : ''
 
   const image = `<img src="${imageUrl}" style="${avatarCSS}" />`
 
   const html = htmlclean(
     `
-    <table border="0" cellspacing="0" cellpadding="0" style="float:left;">
+    <table border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="${avatarSize}" rowspan="2">
           ${image}

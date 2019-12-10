@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     fontSize: '1.2rem',
     paddingLeft: 25,
     margin: '0.2rem 0 0.8rem 0.2rem',
-    maxWidth: 500,
+    minWidth: 500,
   },
   creator: {
     margin: '1rem',
@@ -47,7 +47,7 @@ const SignatureCreatorForm = ({
   defaultGhUsername,
 }: ISignatureCreatorFormProps) => {
   const classes = useStyles()
-  const [avatarFile, setAvatarFile] = React.useState<File>()
+  const [imageFile, setImageFile] = React.useState<File>()
   const [name, setName] = React.useState(defaultName)
   const [position, setPosition] = React.useState(defaultPosition)
   const [liUrl, setLiUrl] = React.useState(defaultLiUrl)
@@ -60,10 +60,10 @@ const SignatureCreatorForm = ({
 
       new Compressor(acceptedFiles[0], {
         ...compressionOpts,
-        success: result => setAvatarFile(result as File),
+        success: result => setImageFile(result as File),
       })
     },
-    [setAvatarFile]
+    [setImageFile]
   )
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
@@ -86,14 +86,14 @@ const SignatureCreatorForm = ({
       </div>
 
       <div {...getRootProps()} className={classes.avatarDrop}>
-        {avatarFile ? avatarFile.name : ''}
+        {imageFile ? imageFile.name : ''}
         {isDragActive ? <p>Drop the files here...</p> : <p>Select avatar image file...</p>}
         <input {...getInputProps()} />
       </div>
       <hr />
       <div className={classes.creator}>
         <SignatureCreator
-          imageFile={avatarFile}
+          imageFile={imageFile}
           name={name}
           position={position}
           linkedinUrl={liUrl}

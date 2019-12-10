@@ -65,7 +65,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "fix": "prettier --write src/**/*.ts src/**/*.tsx && eslint --fix src/**/*.ts src/**/*.tsx",
-    "deploy": "yarn build && AWS_PROFILE=jb aws s3 sync build/ s3://signature-generator.jetbridge.app/"
+    "deploy": "yarn build && AWS_PROFILE=jb aws s3 sync --acl public-read build/ s3://signature-generator.jetbridge.app/"
   },
   "browserslist": {
     "production": [
