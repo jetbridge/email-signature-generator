@@ -11,6 +11,8 @@ export interface SignatureParams {
   linkedinUrl?: string
   blogUrl?: string
   githubUsername?: string
+  link1?: SigLink
+  link2?: SigLink
 }
 
 export interface IGenHTML extends SignatureParams {
@@ -27,6 +29,8 @@ export const generateSignatureHTML = ({
   linkedinUrl,
   blogUrl,
   githubUsername,
+  link1,
+  link2,
 }: IGenHTML): string => {
   const avatarCSS = `
   height: ${avatarSize}px;
@@ -45,6 +49,10 @@ export const generateSignatureHTML = ({
   const blog = blogUrl ? `<a href="${blogUrl}" style="text-decoration: none;">${BlogIcon}</a>` : ''
   const github = githubUsername ? `<a href="https://github.com/${githubUsername}">${GitHubIcon}</a>` : ''
 
+  const makeLink = (text: string, url: string) => `<div><a href="${url}">${text}</a></div>`
+  const link1Html = link1 ? makeLink(link1.text, link1.url) : ''
+  const link2Html = link2 ? makeLink(link2.text, link2.url) : ''
+
   const image = `<img src="${imageUrl}" style="${avatarCSS}" />`
 
   const html = htmlclean(
@@ -59,6 +67,8 @@ export const generateSignatureHTML = ({
           <div style="font-weight: 600;">${name}</div>
           <div>${position} at <a href="https://jetbridge.com" style="color: #4378cb; text-decoration: none;">JetBridge</a></div>
           <div style="margin-top: 5px">${linkedIn} ${blog} ${github}</div>
+          ${link1Html}
+          ${link2Html}
         </td>
       </tr>
     </table>

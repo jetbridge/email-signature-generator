@@ -53,6 +53,10 @@ const SignatureCreatorForm = ({
   const [liUrl, setLiUrl] = React.useState(defaultLiUrl)
   const [blogUrl, setBlogUrl] = React.useState(defaultBlogUrl)
   const [ghUrl, setGhUrl] = React.useState(defaultGhUsername)
+  const [link1, setLink1] = React.useState<string>()
+  const [link1Url, setLink1Url] = React.useState<string>()
+  const [link2, setLink2] = React.useState<string>()
+  const [link2Url, setLink2Url] = React.useState<string>()
 
   const onDrop = React.useCallback(
     acceptedFiles => {
@@ -84,6 +88,14 @@ const SignatureCreatorForm = ({
       <div>
         <TextField placeholder="GitHub Username" className={classes.input} onChange={e => setGhUrl(e.target.value)} />
       </div>
+      <div>
+        <TextField placeholder="Link 1 Text" className={classes.input} onChange={e => setLink1(e.target.value)} />
+        <TextField placeholder="Link 1 URL" className={classes.input} onChange={e => setLink1Url(e.target.value)} />
+      </div>
+      <div>
+        <TextField placeholder="Link 2" className={classes.input} onChange={e => setLink2(e.target.value)} />
+        <TextField placeholder="Link 2 URL" className={classes.input} onChange={e => setLink2Url(e.target.value)} />
+      </div>
 
       <div {...getRootProps()} className={classes.avatarDrop}>
         {imageFile ? imageFile.name : ''}
@@ -99,6 +111,8 @@ const SignatureCreatorForm = ({
           linkedinUrl={liUrl}
           blogUrl={blogUrl}
           githubUsername={ghUrl}
+          link1={link1 && link1Url ? { text: link1, url: link1Url } : undefined}
+          link2={link2 && link2Url ? { text: link2, url: link2Url } : undefined}
         />
       </div>
     </Paper>

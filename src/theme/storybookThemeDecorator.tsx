@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import { RenderFunction } from '@storybook/react'
 import { theme, primaryFont } from '.'
 import useGlobalCSS from './globalCSS'
 
-const withTheme = (story: RenderFunction) =>
+const withTheme = (story: any) =>
   React.createElement(() => {
     useGlobalCSS()
 
